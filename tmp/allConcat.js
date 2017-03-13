@@ -6,7 +6,5 @@ function display(post) {
 
 $(function() {
   var vonda = new Vonda('kittenluver', 13, '3967418257981905863');
-  var travis = new Vonda('kittenluver', 13, '32977108');
-  var mike = new Vonda('kittenluver', 13, '368583982412008379');
   vonda.onTheHalfShell(display);
 });
