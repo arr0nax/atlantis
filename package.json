@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/arr0nax/atlantis#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.8",
     "browserify": "^14.1.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",

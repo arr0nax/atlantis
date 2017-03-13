@@ -1,33 +1,29 @@
 var Blogger = require('./../js/blogger.js').bloggerModule;
+var Googler = require('./../js/googler.js').googlerModule;
 
 
-function Vonda(name, age, blogId) {
+function Vonda(name, age) {
   this.favoriteBeach = 'all of them';
   this.saltWaterBaptism = true;
   this.name = name;
   this.age = age;
   this.gender = 'fish';
-  this.blog = new Blogger(blogId);
+  this.blog = new Blogger();
+  this.googler = new Googler('search');
+  this.posts = 0;
 }
 
 Vonda.prototype.randomNumber = function(max) {
   return Math.floor(Math.random() * max);
-}
+};
 
 Vonda.prototype.randomPost = function(posts) {
   return posts[this.randomNumber(posts.length)];
-}
+};
 
-Vonda.prototype.onTheHalfShell = function(callback) {
+Vonda.prototype.onTheHalfShell = function() {
   vonda = this;
-  $.get(vonda.blog.query(), function(response) {
-    var posts = [];
-    for(var i=0;i<response.items.length;i++){
-      posts.push([response.items[i].title, response.items[i].content]);
-    }
-
-    callback(vonda.randomPost(posts));
-  });
-}
+  vonda.posts = this.googler.search();
+};
 
 exports.vondaModule = Vonda;
