@@ -87,6 +87,14 @@ Vonda.prototype.onTheHalfShell = function() {
   vonda.posts = this.googler.search();
 };
 
+Vonda.prototype.randomWord = function() {
+  $.get('http://www.setgetgo.com/randomword/get.php', function(response) {
+    vonda = new Vonda;
+    vonda.googler = new Googler(response);
+    vonda.posts = vonda.googler.search();
+  });
+}
+
 exports.vondaModule = Vonda;
 
 },{"./../js/blogger.js":2,"./../js/googler.js":3}],5:[function(require,module,exports){
@@ -98,7 +106,7 @@ $(function() {
   var vonda = new Vonda('kittenluver', 13, 'mermaid');
   // var travis = new Vonda('kittenluver', 13, '32977108');
   // var mike = new Vonda('kittenluver', 13, '368583982412008379');
-  console.log(vonda.onTheHalfShell());
+  console.log(vonda.randomWord());
 });
 
 },{"./../js/vonda.js":4}]},{},[5]);

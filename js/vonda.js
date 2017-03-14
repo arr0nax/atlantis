@@ -26,4 +26,12 @@ Vonda.prototype.onTheHalfShell = function() {
   vonda.posts = this.googler.search();
 };
 
+Vonda.prototype.randomWord = function() {
+  $.get('http://www.setgetgo.com/randomword/get.php', function(response) {
+    vonda = new Vonda;
+    vonda.googler = new Googler(response);
+    vonda.posts = vonda.googler.search();
+  });
+}
+
 exports.vondaModule = Vonda;
